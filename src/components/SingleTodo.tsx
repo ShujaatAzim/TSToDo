@@ -43,8 +43,11 @@ const SingleTodo: React.FC<Props> = ({todo, todos, setTodos}) => {
 
   return (
     <form className="todos__single" onSubmit={(e) => handleEdit(e, todo.id)}>
-      { edit ? <input ref={inputRef} value={editTodo} onChange={e => setEditTodo(e.target.value)} className="todos__single--text" /> : 
-        todo.isDone ? <s className="todos__single--text">{todo.todo}</s> : <span className="todos__single--text">{todo.todo}</span>}
+      { edit ? 
+        <input ref={inputRef} value={editTodo} onChange={e => setEditTodo(e.target.value)} className="todos__single--text" /> : 
+        todo.isDone ? <s className="todos__single--text">{todo.todo}</s> : 
+        <span className="todos__single--text">{todo.todo}</span> 
+      }
       <div>
         <span className="icon" onClick={() => !todo.isDone ? setEdit(!edit) : null }><AiFillEdit /></span>
         <span className="icon" onClick={() => handleDelete(todo.id)}><AiFillDelete /></span>
